@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-xs-12">
+        <img [src]="recipe.imagePath" alt="" class="img-responsive">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <h1> {{recipe.name}}</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        {{recipe.description}}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+     {{recipe.time}}
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let ingredient of recipe.ingredients">
+        {{ ingredient.name }} - {{ ingredient.amount }}
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-3">
+        <button class="btn btn-danger" (click)="onDeleteRecipe()">Delete Recipe</button>
+    </div>
+  <div class="col-xs-3">
+    <button class="btn btn-success" (click)="ondEditRecipe()">Edit Recipe</button>
+  </div>
+  <div class="col-xs-3">
+    <button class="btn btn-success" (click)="onAddToIngredientsList()">Add to Ingredients</button>
+  </div>
+    <div class="col-xs-3">
+      <a href="{{recipe.comesFrom}}" target="_blank">
+        <button class="btn btn-primary">View Source</button>
+      </a>
+
+    </div>
+</div>
