@@ -10,24 +10,18 @@ import {ShoppingListService} from '../shopping-list/shopping-list.service';
 })
 export class RecipeService {
 
-  recipeChanged = new Subject<Recipe[]>()
+  recipeChanged = new Subject<Recipe[]>();
 
-  private recipes: Recipe[] = [
-    new Recipe('This is recipe', 'First Recipe', 'https://www.handletheheat.com/nutella-cake/', 'https://www.mycakeschool.com/images/2019/10/Chocolate-Nutella-Cake-Recipe-Featured-Image--720x720.jpg', '1h10min',
-      [
-        new Ingredient('Meat', 1),
-        new Ingredient('French Fries', 20)
-      ]),
-    new Recipe('This is recipe', 'First Recipe', 'https://www.handletheheat.com/nutella-cake/', 'https://www.mycakeschool.com/images/2019/10/Chocolate-Nutella-Cake-Recipe-Featured-Image--720x720.jpg', '1h10min',
-      [
-        new Ingredient('Meat', 1),
-        new Ingredient('French Fries', 20)
-      ])
-  ];
+  private recipes: Recipe[];
 
   constructor(
     private slService: ShoppingListService
   ) { }
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipeChanged.next(this.recipes.slice());
+  }
 
 
   getRecipes() {

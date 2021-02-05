@@ -5,8 +5,8 @@
   class="list-group-item clearfix">
   <div class="pull-left">
     <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
-    <p class="list-group-item-text">{{ recipe.description }}</p>
-    <p>Needed time: {{recipe.time}} </p>
+    <p class="list-group-item-text">{{ recipe.description | slice: 0: 30 }}...</p>
+    <p>Needed time: <span>{{recipe.hour}}h</span> - <span>{{recipe.minutes}}min</span></p>
     <!-- <a href="{{recipe.comesFrom}}" target="_blank"><button class="btn btn-outline-primary btn-sm">Source </button></a> -->
   </div>
 

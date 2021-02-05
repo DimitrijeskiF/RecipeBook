@@ -66,7 +66,9 @@ export class RecipeAddComponent implements OnInit {
   private initForm() {
     let recipeName = '';
     let recipeImagePath = '';
-    let recipePrepTime = '';
+    let recipePrepHour;
+    // tslint:disable-next-line:prefer-const
+    let recipePrepMinutes;
     let recipePrepInst = '';
     let recipeSource = '';
     const recipeIngredients = new FormArray([]);
@@ -77,7 +79,8 @@ export class RecipeAddComponent implements OnInit {
       const recipe = this.recipeService.getRecipe(this.id);
       recipeName = recipe.name;
       recipeImagePath = recipe.imagePath;
-      recipePrepTime = recipe.time;
+      recipePrepHour = recipe.hour;
+      recipePrepMinutes = recipe.minutes;
       recipePrepInst = recipe.description;
       recipeSource = recipe.comesFrom;
       if (recipe.ingredients) {
@@ -98,7 +101,8 @@ export class RecipeAddComponent implements OnInit {
     this.recipeForm = new FormGroup({
       name: new FormControl(recipeName, Validators.required),
       imagePath: new FormControl(recipeImagePath, Validators.required),
-      time: new FormControl(recipePrepTime, Validators.required),
+      hour: new FormControl(recipePrepHour, Validators.required),
+      minutes: new FormControl(recipePrepMinutes, Validators.required),
       description: new FormControl(recipePrepInst, Validators.required),
       source: new FormControl(recipeSource, Validators.required),
       ingredients: recipeIngredients

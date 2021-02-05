@@ -5,15 +5,19 @@ export class Recipe {
     public description: string;
     public comesFrom: string;
     public imagePath: string;
-    public time: string;
+    public hour: number;
+    public minutes: number;
+
   public ingredients: Ingredient[];
 
-    constructor(name: string, description: string,  comesFrom: string, imagePath: string, time: string,  ingredients: Ingredient[]){
+  // tslint:disable-next-line:max-line-length
+    constructor(name: string, description: string,  comesFrom: string, imagePath: string, hour: number, minutes: number,  ingredients: Ingredient[]){
         this.name = name;
         this.comesFrom = comesFrom;
         this.imagePath = imagePath;
         this.description = description;
-        this.time = time;
+        this.hour = hour;
+        this.minutes = minutes;
         this.ingredients = ingredients;
     }
 }
